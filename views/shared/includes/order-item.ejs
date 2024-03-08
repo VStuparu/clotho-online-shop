@@ -1,0 +1,80 @@
+<article class="order-item">
+    <% let totalPriceOfOrder=0 %>
+        <% if(locals.isAdmin) { %>
+            <address>
+                <p><a href="mailto:<%= order.userData.email %>">
+                        <%= order.userData.firstName %>
+                            <%= order.userData.lastName %>
+                    </a></p>
+                <p>
+                    <%= order.userData.address.street %> (<%= order.userData.address.zip %>
+                            <%= order.userData.address.city %>)
+                </p>
+            </address>
+            <% } %>
+                <div class="order">
+                    <% for (const item of order.productData.items) { %>
+                        <div class="product-information">
+
+                            <p>
+                            <div class="image-container">
+                                <img src="<%= item.product.imageUrl %>" alt="<%= item.product.title %>">
+                            </div>
+
+                            <strong>
+                                <%= item.product.title %> x <%= +item.quantity %>
+                            </strong>
+                            </p>
+
+                            <div class="price-container">
+                                <p>
+                                    £ <%= (item.product.price * +item.quantity).toFixed(2) %>
+                                </p>
+                            </div>
+                            <div class="price-calculator">
+                                <%= totalPriceOfOrder +=item.totalPrice %>
+                            </div>
+                        </div>
+                        <% } %>
+                            <div class="status-container <%= order.status %>">
+                                <p class="status <%= order.status %>">
+                                    <%= order.status %>
+                                </p>
+                            </div>
+                </div>
+
+
+                <div class="total-price">
+                    <strong> £ <%= totalPriceOfOrder.toFixed(2) %> </strong>
+                </div>
+                <% if(!locals.isAdmin) { %>
+                    <div class="buttons-container">
+                        <form action="/orders/<%= order.id %>" method="GET">
+                            <button class="btn">View Order</button>
+                        </form>
+                        <% if(order.status==='pending' ) { %>
+                            <form action="/orders/<%= order.id %>/cancel">
+                                <button class="btn-red">Cancel Order</button>
+                            </form>
+                            <% } %>
+                    </div>
+                    <% } %>
+
+                        <% if(locals.isAdmin) { %>
+                            <section class="order-actions">
+                                <form>
+
+                                    <input type="hidden" name="orderid" value="<%= order.id %>">
+                                    <select name="status">
+                                        <option value="pending" <% if (order.status==='pending' ) { %>selected<% } %>
+                                                >Pending</option>
+                                        <option value="fulfilled" <% if (order.status==='fulfilled' ) { %>selected<% }
+                                                %>>Fulfilled</option>
+                                        <option value="cancelled" <% if (order.status==='cancelled' ) { %>selected<% }
+                                                %>>Cancelled</option>
+                                    </select>
+                                    <button class="btn btn-alt">Update</button>
+                                </form>
+                            </section>
+                            <% } %>
+</article>

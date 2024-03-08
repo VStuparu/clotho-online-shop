@@ -1,0 +1,16 @@
+<div class="order-item-element">
+    <div class="image-holder">
+        <img src="<%= item.product.imageUrl %>" alt="<%= item.product.title %>">
+    </div>
+    <div class="order-item-title">
+        <h3>
+            <%= item.product.title %>
+        </h3>
+    </div>
+
+    <div>
+        <p> <strong> £ <%= item.product.price.toFixed(2) %> </strong>
+        </p>
+    </div>
+
+</div>

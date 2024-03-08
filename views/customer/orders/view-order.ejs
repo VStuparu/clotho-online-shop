@@ -1,0 +1,19 @@
+<%- include('../../shared/includes/head', {pageTitle: 'Order' }) %>
+    <link rel="stylesheet" href="/styles/orders.css">
+    </head>
+
+    <body>
+        <%- include('../../shared/includes/header') %>
+
+            <main class="view-order-page">
+                <% for(const item of order.productData.items) { %>
+                    <%- include('../../shared/includes/view-order-item', {item: item}) %>
+                        <% } %>
+
+                            <h3 id="total-price-of-order">Total: £ <%= order.productData.totalPrice %>
+                            </h3>
+            </main>
+
+
+
+            <%- include('../../shared/includes/footer') %>

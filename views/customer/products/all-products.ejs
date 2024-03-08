@@ -1,0 +1,24 @@
+<%- include('../../shared/includes/head', {pageTitle: 'Home' }) %>
+    <link rel="stylesheet" href="/styles/forms.css">
+    <link rel="stylesheet" href="/styles/auth.css">
+    <link rel="stylesheet" href="/styles/products.css">
+    </head>
+
+    <body>
+        <%- include('../../shared/includes/header') %>
+            <main class="main-page">
+                <%- include('../../shared/includes/carousel') %>
+                    <section class="products-section">
+                        <h2>Our Products</h2>
+                        <ul id="products-grid">
+                            <% for(const product of products) { %>
+                                <li>
+                                    <%- include('../../shared/includes/product-item', {product:product}) %>
+                                </li>
+
+                                <% } %>
+                        </ul>
+                    </section>
+            </main>
+
+            <%- include('../../shared/includes/footer') %>

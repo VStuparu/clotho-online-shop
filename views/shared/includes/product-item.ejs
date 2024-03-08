@@ -1,0 +1,29 @@
+<div class="product-card">
+    <div class="card-image-container">
+        <img src="<%= product.imageUrl %>" alt="<%= product.title %>">
+    </div>
+    <div class="text-holder">
+        <h3>
+            <%= product.title %>
+        </h3>
+        <p>
+            <%= product.summary %>
+        </p>
+        <p id="price">
+            £ <%= +product.price %>
+        </p>
+    </div>
+    <div class="overlay">
+        <a href="/products/<%= product.id %>" class="btn-alt">
+            View
+        </a>
+        <% if(locals.isAdmin) { %>
+            <a href="/admin/products/<%= product.id %>" class="btn-alt">
+                Edit
+            </a>
+            <button class="btn-alt" data-productid="<%= product.id %>">
+                Delete
+            </button>
+            <% } %>
+    </div>
+</div>

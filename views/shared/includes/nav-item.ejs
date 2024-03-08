@@ -1,0 +1,46 @@
+<ul class="nav-items">
+    <div id="logo">
+        <a href="/">
+            <img src="/assets/clotho-logo.png" alt="">
+            <p>Clotho Bracelets</p>
+        </a>
+    </div>
+    <li class="nav-links">
+        <% if(locals.isAdmin) { %>
+            <a href="/admin/products">Home</a>
+            <a href="/admin/products/new">Add Product</a>
+            <a href="/admin/orders">Manage Orders</a>
+            <% } %>
+                <% if(!locals.isAdmin) { %>
+                    <a href="/">Home</a>
+                    <a href="">Shop</a>
+                    <a href="/about">Our Story</a>
+                    <a href="/contact">Contact</a>
+
+    </li>
+    <% } %>
+        <li class="nav-buttons">
+            <% if(locals.isAuth) { %>
+                <a href="/profile/<%= locals.uid %>"><img src="/assets/profile-icon.png" alt="profile"></a>
+                <% } %>
+
+
+                    <a href="" class="search-button"><img src="/assets/search-icon.png" alt="">
+                    </a>
+
+                    <a href="/cart"><img src="/assets/cart-icon.png" alt=""><span class="badge">
+                            <%= locals.cart.totalQuantity %>
+                        </span></a>
+                    <% if (!locals.isAuth) { %>
+                        <a href="/login" class="btn">Login</a>
+                        <a href="/signup" class="btn">Signup</a>
+                        <% } %>
+                            <% if (locals.isAuth) { %>
+                                <form action="/logout" method="POST">
+                                    <button class="btn">Logout</button>
+                                </form>
+
+
+        </li>
+        <% } %>
+</ul>

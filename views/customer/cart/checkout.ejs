@@ -1,0 +1,59 @@
+<%- include('../../shared/includes/head', {pageTitle: 'Checkout' }) %>
+    <!-- <link rel="stylesheet" href="/styles/base.css"> -->
+    <link rel="stylesheet" href="/styles/cart.css">
+
+    </head>
+
+    <body>
+        <%- include('../../shared/includes/header') %>
+
+            <h1 class="title">Checkout</h1>
+            <main class="checkout">
+
+                <ul class="items">
+                    <% for(const cartItem of locals.cart.items) { %>
+                        <li>
+                            <%- include('includes/cart-item', {item: cartItem}) %>
+
+                        </li>
+                        <% } %>
+                </ul>
+                <div class="cart-total">
+                    <div class="cart-total-element">
+                        <h3>Subtotal</h3>
+                        <h3>£<%= locals.cart.totalPrice.toFixed(2) %>
+                        </h3>
+                    </div>
+                    <div class="cart-total-element">
+                        <p>Delivery Charge</p>
+                        <p>£5.00</p>
+                    </div>
+                    <div class="cart-total-element">
+                        <h3>Total</h3>
+                        <h3>
+                            £ <span id="cart-total-price">
+                                <%= (locals.cart.totalPrice + 5).toFixed(2) %>
+                            </span>
+                        </h3>
+                    </div>
+                    <div class="proceed-button">
+                        <% if(locals.isAuth) { %>
+                            <form id="checkout-form" action="/orders" method="POST">
+                                <button class="btn">Proceed to Checkout</button>
+                            </form>
+                            <% } else { %>
+                                <p>Log in to proceed and purchase</p>
+                                <% } %>
+                    </div>
+
+                </div>
+            </main>
+            <div class="popup-overlay hidden" id="overlay"></div>
+            <div id="confirmation-popup" class="popup hidden">
+                <h2>Are you sure you want to proceed?</h2>
+                <p>Double-check your address before proceeding. Click "Yes" to confirm your order or "No" to cancel.</p>
+                <button class="btn" id="confirm-button">Yes</button>
+                <button class="btn" id="cancel-button">No</button>
+            </div>
+
+            <%- include('../../shared/includes/footer') %>

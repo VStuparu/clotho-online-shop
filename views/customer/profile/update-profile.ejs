@@ -1,0 +1,35 @@
+<%- include('../../shared/includes/head', {pageTitle: 'Edit Profile' }) %>
+    <link rel="stylesheet" href="/styles/profile.css">
+    <!-- <link rel="stylesheet" href="/styles/cart.css"> -->
+
+
+    </head>
+
+    <body>
+        <%- include('../../shared/includes/header') %>
+            <main class="edit-profile">
+                <h3>Edit Profile</h3>
+                <form action="/profile/<%= locals.uid %>/edit" method="POST" class="profile-information">
+                    <div class="grid-container">
+                        <p>
+                            <label for="first-name">First Name</label>
+                            <input type="text" id="first-name" value="<%= user.firstName %>" name="first-name">
+                        </p>
+                        <p>
+                            <label for="last-name">Last Name</label>
+                            <input type="text" id="last-name" value="<%= user.lastName %>" name="last-name">
+                        </p>
+
+                        <p>
+                            <label for="email">Email Address</label>
+                            <input type="text" id="email" value="<%= user.email %>" name="email">
+                        </p>
+
+
+                    </div>
+                    <button class="btn">Update Profile</button>
+                </form>
+
+            </main>
+
+            <%- include('../../shared/includes/footer') %>

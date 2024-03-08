@@ -1,0 +1,155 @@
+.checkout {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-around;
+    width: 90%;
+    margin: 5rem auto;
+    flex-wrap: wrap;
+}
+
+
+
+a img {
+    width: 1rem;
+    height: 1rem;
+}
+
+.title {
+    font-weight: 400;
+    font-size: 2rem;
+    margin: 2rem 3rem;
+}
+
+.items {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    /* align-items: flex-start; */
+    /* justify-content: space-around; */
+}
+
+.items input {
+    /* padding: 1rem 3rem; */
+    border-radius: 8px;
+    width: 5rem;
+    height: 2.5rem;
+}
+
+.cart-total {
+    display: flex;
+    flex-direction: column;
+    /* align-items: flex-end; */
+    justify-content: space-between;
+    /* height: 30rem; */
+    border:1px solid rgba(0, 0, 0, 0.1);
+    /* box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); */
+    /* width: 100%; */
+    /* align-items: center; */
+    /* width: 20%; */
+}
+
+.checkout h3 {
+    font-size: 1rem;
+    font-weight: bolder;
+}
+
+.item-element {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 4px;
+    border-bottom:1px solid rgba(0, 0, 0, 0.1); ;
+    padding: 2rem 0;
+    
+}
+
+.cart-total-element {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 2rem 3rem;
+}
+
+.image-holder {
+    width: 3rem;
+    height: 3rem;
+    
+}
+
+.image-holder img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.item-title {
+    width: 40%;
+    /* text-overflow: clip; */
+}
+
+.proceed-button {
+    width: 100%;
+}
+
+#update-cart-quantity {
+    padding: .5rem .5rem;
+}
+
+.proceed-button button {
+    width: 100%;
+}
+
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 2000;
+}
+
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1001;
+    /* display: none; */
+}
+
+.hidden {
+    display: none;
+}
+
+@media (max-width: 48rem) {
+    .checkout {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .items, 
+    .cart-total {
+        width: 100%;
+    }
+
+    .items input {
+        height: 2rem;
+    }
+
+    .item-element,
+    .cart-total-element {
+        padding: 1rem 0;
+    }
+
+    .title {
+        font-size: 1.2rem;
+        margin: 1rem 0;
+    }
+}

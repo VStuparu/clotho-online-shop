@@ -1,0 +1,39 @@
+<%- include('../../shared/includes/head', {pageTitle: product.title }) %>
+    <link rel="stylesheet" href="/styles/forms.css">
+    <link rel="stylesheet" href="/styles/auth.css">
+    <link rel="stylesheet" href="/styles/products.css">
+    <script src="/scripts/cart-management.js" defer></script>
+    </head>
+
+    <body>
+        <%- include('../../shared/includes/header') %>
+
+            <main class="product-details">
+                <div class="product-details-container">
+                    <div class="details-image-container">
+                        <img src="<%= product.imageUrl %>" alt="<%= product.title %>">
+                    </div>
+                    <div class="details-text-container">
+                        <h2>
+                            <%= product.title %>
+                        </h2>
+                        <p>
+                            <%= product.summary %>
+                        </p>
+                        <p>£ <%= +product.price %>
+                        </p>
+                        <p>
+                            <%= product.description %>
+                        </p>
+                        <div class="details-buttons-container">
+                            <% if(!locals.isAdmin) { %>
+                                <input type="number" name="price-stepper" id="price-stepper" value="1" min="1" step="1"
+                                    required>
+                                <button class="btn" data-productid="<%= product.id %>">Add to Cart</button>
+                        </div>
+                        <% } %>
+                    </div>
+                </div>
+            </main>
+
+            <%- include('../../shared/includes/footer') %>

@@ -1,0 +1,67 @@
+<%- include('../../shared/includes/head', {pageTitle: 'My Profile' }) %>
+    <link rel="stylesheet" href="/styles/profile.css">
+    <!-- <link rel="stylesheet" href="/styles/cart.css"> -->
+
+
+    </head>
+
+    <body>
+        <%- include('../../shared/includes/header') %>
+            <h1 class="title">My Profile</h1>
+            <main class="profile">
+
+
+                <ul class="my-profile">
+                    <li class="greet-name">
+                        <p>Hello &#128075;</p>
+                        <h3>
+                            <%= user.firstName %>
+                                <%= user.lastName %>
+                        </h3>
+                    </li>
+                    <li class="profile-sites"><img src="/assets/profile-icon.png" alt=""><a
+                            href="/profile/<%= locals.uid %>">Personal
+                            Information</a></li>
+                    <li class="profile-sites"><img id="orders-icon" src="/assets/orders-icon.png" alt=""><a
+                            href="/orders">My
+                            Orders</a></li>
+                    <li class="profile-sites"><img src="/assets/location-icon.png" alt=""><a
+                            href="/profile/<%= locals.uid %>/address">Manage Adresses</a>
+                    </li>
+                </ul>
+                <form action="/profile/<%= locals.uid %>/edit" method="GET" class="profile-information">
+                    <div class="grid-container">
+                        <p>
+                            <label for="first-name">First Name</label>
+                            <input type="text" id="first-name" value="<%= user.firstName %>" name="first-name" readonly>
+                        </p>
+                        <p>
+                            <label for="last-name">Last Name</label>
+                            <input type="text" id="last-name" value="<%= user.lastName %>" name="last-name" readonly>
+                        </p>
+                        <p>
+                            <label for="phone-number">Phone Number</label>
+                            <input type="text" id="phone-number" <% if(user.address) { %> value="<%= address.phoneNumber
+                                %>"
+                                <% } %> name="phone-number"
+                                    readonly>
+                        </p>
+                        <p>
+                            <label for="email">Email Address</label>
+                            <input type="text" id="email" value="<%= user.email %>" name="email" readonly>
+                        </p>
+                        <p class="address">
+                            <label for="address">Address</label>
+                            <input type="text" id="address" <% if(user.address) { %> value="<%= address.houseNumber %>, <%= address.street %>, <%= address.city %>, <%= address.zip %>, <%= address.country %>"
+
+                                                <% } %>
+                                                    name="address" readonly>
+                        </p>
+
+                    </div>
+                    <button class="btn">Edit Profile</button>
+                </form>
+
+            </main>
+
+            <%- include('../../shared/includes/footer') %>

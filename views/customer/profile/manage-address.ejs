@@ -1,0 +1,74 @@
+<%- include('../../shared/includes/head', {pageTitle: 'Manage Address' }) %>
+    <link rel="stylesheet" href="/styles/profile.css">
+    <!-- <link rel="stylesheet" href="/styles/cart.css"> -->
+
+
+    </head>
+
+    <body>
+        <%- include('../../shared/includes/header') %>
+            <h1 class="title">My Profile</h1>
+            <main class="profile">
+
+
+                <ul class="my-profile">
+                    <li class="greet-name">
+                        <p>Hello &#128075;</p>
+                        <h3>
+                            <% if(address) { %>
+                                <%= address.name %>
+                                    <% } %>
+                        </h3>
+                    </li>
+                    <li class="profile-sites"><img src="/assets/profile-icon.png" alt=""><a
+                            href="/profile/<%= locals.uid %>">Personal
+                            Information</a></li>
+                    <li class="profile-sites"><img src="/assets/orders-icon.png" alt=""><a href="">My
+                            Orders</a></li>
+                    <li class="profile-sites"><img src="/assets/location-icon.png" alt=""><a
+                            href="/profile/<%= locals.uid %>/address">Manage Adresses</a>
+                    </li>
+                </ul>
+                <form action="/profile/<%= locals.uid %>/address" method="POST" class="address-form">
+                    <p>
+                        <label for="name"> Name</label>
+                        <input type="text" id="name" <% if(address) { %> value="<%= address.name %>" <% } %>
+                                name="name">
+                    </p>
+                    <p>
+                        <label for="phone-number">Mobile Number</label>
+                        <input type="number" id="phone-number" <% if(address) { %> value="<%= address.phoneNumber %>" <%
+                                } %> name="phone-number"
+                                required>
+                    </p>
+                    <p>
+                        <label for="house-number">Flat, House no., Building</label>
+                        <input type="text" id="house-number" <% if(address) { %> value="<%= address.houseNumber %>" <% }
+                                %> name="house-number"
+                                required>
+                    </p>
+                    <p>
+                        <label for="street">Area, Colony, Street, Sector, Village</label>
+                        <input type="text" id="street" name="street" <% if(address) { %> value="<%= address.street %>"
+                            <% } %> required>
+                    </p>
+                    <p>
+                        <label for="city">City</label>
+                        <input type="text" id="city" <% if(address) { %> value="<%= address.city %>" <% } %> name="city"
+                                required>
+                    </p>
+                    <p>
+                        <label for="zip">Zip Code</label>
+                        <input type="text" id="zip" <% if(address) { %> value="<%= address.zip %>" <% } %> name="zip"
+                                required>
+                    </p>
+                    <p>
+                        <label for="country">Country</label>
+                        <input type="text" id="country" <% if(address) { %> value="<%= address.country %>" <% } %>
+                                name="country" required>
+                    </p>
+                    <button class="btn">Save Info</button>
+                </form>
+            </main>
+
+            <%- include('../../shared/includes/footer') %>

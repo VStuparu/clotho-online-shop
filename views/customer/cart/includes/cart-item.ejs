@@ -1,0 +1,26 @@
+<div class="item-element">
+    <div class="image-holder">
+        <img src="<%= item.product.imageUrl %>" alt="<%= item.product.title %>">
+    </div>
+    <div class="item-title">
+        <h3>
+            <%= item.product.title %>
+        </h3>
+    </div>
+
+    <p>£ <%= item.product.price.toFixed(2) %>
+    </p>
+    <form action="" class="cart-item-management" data-productid="<%= item.product.id %>">
+        <input type="number" name="price-stepper" id="price-stepper" value="<%= item.quantity %>" step="1" required>
+        <button class="btn-alt" id="update-cart-quantity">
+            Update
+        </button>
+    </form>
+
+    <p id="total-price">£ <span class="cart-item-total">
+            <%= item.totalPrice.toFixed(2) %>
+        </span>
+    </p>
+    <!-- <a href="#" class="delete-from-cart-button" ><img
+            src="/assets/delete-icon.png" alt="delete"></a> -->
+</div>

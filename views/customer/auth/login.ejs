@@ -1,0 +1,43 @@
+<%- include('../../shared/includes/head', {pageTitle: 'Login' }) %>
+    <link rel="stylesheet" href="/styles/forms.css">
+    <link rel="stylesheet" href="/styles/auth.css">
+    </head>
+
+    <body>
+        <div id="logo">
+            <a href="/">
+                <img src="/assets/clotho-logo.png" alt="">
+                <p>Clotho Bracelets</p>
+            </a>
+        </div>
+
+        <main class="auth-page">
+            <div class="image-container">
+                <img src="/assets/login-image.png" alt="onyx-bracelet">
+            </div>
+            <form action="/login" class="auth-form" method="POST">
+                <div class="auth-title">
+                    <h1>Welcome &#128075;</h1>
+                    <p>Please login here</p>
+                </div>
+                <% if(inputData.errorMessage) { %>
+                    <section class="alert">
+                        <h1>Invalid credentials</h1>
+                        <p>
+                            <%= inputData.errorMessage %>
+                        </p>
+                    </section>
+                    <% } %>
+
+                        <label for="email">Email Adress</label>
+                        <input type="email" name="email" id="email" required>
+                        </p>
+                        <p>
+                            <label for="password">Password</label>
+                            <input type="password" name="password" id="password" required>
+                        </p>
+                        <button class="btn">Login</button>
+            </form>
+        </main>
+
+        <%- include('../../shared/includes/footer') %>
